@@ -1,6 +1,5 @@
 import pygame
 
-
 # Inicialização do pygame
 pygame.init()
 
@@ -22,11 +21,9 @@ quad = pygame.Surface((40, 40))
 for i in range(0, 4):
     for j in range(0, 4):        
         if matriz[i][j] == 1:
-            tela.blit(img_verde, (i * 40, j * 40))
+            tela.blit(img_verde, (i*40, j*40))
         else:
             tela.blit(img_vermelha, (i*40, j*40))
 
         
 pygame.display.update()
-
-input("Pressione Enter para sair")
