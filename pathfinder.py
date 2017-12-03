@@ -1,4 +1,5 @@
 import pygame
+import time
 
 
 # Inicialização do pygame
@@ -25,6 +26,7 @@ grid = [[0, 0, 0, 0, 0, 1],
 
 # A função search(x,y) faz a verficação da célula visitada;
 def search(x,y):
+    grid[x][y] = 3
     if grid[x][y] == 1:
         print("Parede em: %d,%d" % (x, y))
         return False
@@ -37,9 +39,9 @@ def search(x,y):
 
     print("Visitando %d,%d" % (x, y))
     printGrid(x,y)
-    sleep(200)
-    # Marcando como visitado
     grid[x][y] = 3;
+    pygame.time.wait(100)
+    # Marcando como visitado
 
     # Explorando vizinhos em sentido horário começando pelo da direita
     if ((x < len(grid)-1 and search(x+1, y))
@@ -67,19 +69,21 @@ def printGridIni():
     pygame.display.update()
 
 
-printGridIni()
 
 def printGrid(i ,j):
     if grid[i][j] == 0:
         tela.blit(img_branco, (i * 40, j * 40))
     elif grid[i][j] == 1:
-         tela.blit(img_azul, (i * 40, j * 40))
+        tela.blit(img_azul, (i * 40, j * 40))
     elif grid[i][j] == 2:
-         tela.blit(img_vermelha, (i * 40, j * 40))
+        tela.blit(img_vermelha, (i * 40, j * 40))
     elif grid[i][j] == 3:
-         tela.blit(img_preta, (i * 40, j * 40))
+        tela.blit(img_preta, (i * 40, j * 40))
     pygame.display.update()
 
+
+
+printGridIni()
 search(0,0)
 
 
