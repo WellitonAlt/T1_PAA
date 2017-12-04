@@ -1,7 +1,15 @@
 import heapq
+import pygame
 
 from Spot import Spot
 
+# Inicialização do pygame
+pygame.init()
+
+# Tamanho e nome da janela
+tela = pygame.display.set_mode([400,400])
+tela.fill((255, 255, 255))
+pygame.display.set_caption("PathFinding AStar")
 
 class AStar(object):
     def __init__(self):
@@ -10,20 +18,25 @@ class AStar(object):
         self.closed = set()
         self.spots = []
         self.grid_height = 6
-        self.grid_width = 6
+        self.grid_width = 6     
+       
 
     def init_grid(self):
         walls = ((0, 5), (1, 0), (1, 1), (1, 5), (2, 3),
                 (3, 1), (3, 2), (3, 5), (4, 1), (4, 4), (5, 1))
 
+                   
         for x in range(self.grid_width):
             for y in range(self.grid_height):
                 if (x, y) in walls:
                     noWall = False
+                    pygame.draw.rect(tela, (0,0,255) ,(x*40,y*40,40))                    
                 else:
                     noWall = True
+                    pygame.draw.rect(tela, (255,255,255) ,(j*40,i*40,40,40))               
                 self.spots.append(Spot(x, y, noWall))
 
+        pygame.display.update()
         self.start = self.get_spot(0,0)
         self.end = self.get_spot(5,5)
 
@@ -94,8 +107,10 @@ class AStar(object):
         # Função característica da heurística A*
         # f(x) = g(x) + h(x)
         adj.f = adj.g + adj.h
+      
+                   
 
-    def main(self):
+    def main(self):        
         # Adiciona spot inicial à heap
         heapq.heappush(self.opened, (self.start.f, self.start))
         while len(self.opened):
