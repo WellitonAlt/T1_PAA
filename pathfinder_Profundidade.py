@@ -10,23 +10,16 @@ tela = pygame.display.set_mode([400,400])
 tela.fill((255, 255, 255))
 pygame.display.set_caption("PathFinding")
 
-
-img_verde = pygame.image.load('Imagens/Verde.jpg')
-img_vermelha = pygame.image.load('Imagens/Vermelho.jpg')
-img_preta = pygame.image.load('Imagens/Preto.jpg')
-img_azul = pygame.image.load('Imagens/Azul.jpg')
-img_branco = pygame.image.load('Imagens/Branco.jpg')
-
 # Mapa inicial
 grid = [[0, 0, 1, 1, 0, 0, 0, 1, 1, 1],
-        [1, 0, 0, 0, 1, 1, 0, 0, 1, 1],
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
         [1, 1, 1, 0, 0, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 0, 1, 1, 0, 0, 1, 0],
-        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 0, 0, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 0, 1, 0, 0, 0, 1, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 1, 1],
+        [1, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0, 0, 0, 1, 1],
         [1, 1, 0, 0, 0, 0, 1, 0, 0, 2]];
 
 # Imprime o mapa inicial
